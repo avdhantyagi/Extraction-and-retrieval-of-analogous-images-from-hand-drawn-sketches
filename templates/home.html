@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+    <link rel="stylesheet" href="../static/home.css">
+</head>
+<body>
+    <form method="post">
+        <div>
+
+            <div>
+                <label for="file">Choose Image</label>
+                <input type="file" name="file" accept=".jpg, .JPEG" required>
+            </div>
+
+            <div>
+
+                <div>Choose Algorithm</div>
+                <ul>
+                    <li><input type="radio" name="algo" value="Jaccard" required> Jaccard </li>
+                    <li><input type="radio" name="algo" value="Hamming"> Hamming</li>
+                    <li><input type="radio" name="algo" value="SSIM"> SSIM</li>
+                    <li><input type="radio" name="algo" value="Hausdorff"> Hausdorff</li>
+                </ul>
+
+            </div>
+
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
