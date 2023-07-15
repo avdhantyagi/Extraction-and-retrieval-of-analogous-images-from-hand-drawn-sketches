@@ -16,7 +16,7 @@ def home():
 @app.route("/result", methods = ['GET', 'POST'])
 def result():
     if request.method == 'GET':
-        return("<h1>" + " Results : " + " .. " + inp_arr["file"]+' with algo: '+inp_arr["algo"] + ' in class: '+ inp_arr["class"]+ "</h1>" )
+        return("<h1>" + " Results : " +"</h1>"+ "<br> file : " + inp_arr["file"]+'<br> algo: '+inp_arr["algo"] + '<br> class: '+ inp_arr["class"])
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
