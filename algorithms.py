@@ -40,12 +40,12 @@ from skimage.metrics import structural_similarity
 def pred_ssim(path, data, start, end):
     u_img = cv.imread(path)
     u_img = cv.cvtColor(u_img, cv.COLOR_BGR2GRAY)
-    u_img = cv.convertScaleAbs(u_img, alpha=1.5, beta=10)
+    u_img = cv.Canny(200,350)
 
     ssimarr = []
-    # before_gray = cv2.cvtColor(u_img, cv2.COLOR_BGR2GRAY)
     for i in range(start,end):
         ximg = cv.imread(data['path'][i])
         ximg = cv.cvtColor(ximg, cv.COLOR_BGR2GRAY)
         (score, diff) = structural_similarity(u_img, ximg, full=True)
         ssimarr.append([score,data['path'][i]])
+        return ssimarr
