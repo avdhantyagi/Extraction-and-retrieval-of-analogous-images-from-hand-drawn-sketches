@@ -7,7 +7,9 @@ inp_arr = {'algo':".", 'class':".", 'file':"."}
 def home():
     if request.method == 'POST':
         inp_arr['algo'] = request.form.get('algo')
-        inp_arr['file'] = request.form.get('file')
+        f = request.files['file']
+        path = "./A.jpg"
+        f.save(path)
         inp_arr['class'] = request.form.get('class')
         return (redirect(url_for('result')))
     else:
@@ -16,7 +18,8 @@ def home():
 @app.route("/result", methods = ['GET', 'POST'])
 def result():
     if request.method == 'GET':
-        return("<h1>" + " Results : " +"</h1>"+ "<br> file : " + inp_arr["file"]+'<br> algo: '+inp_arr["algo"] + '<br> class: '+ inp_arr["class"])
+        
+        return("<h1>" + " Results : " + inp_arr["file"]+'<br> algo: '+inp_arr["algo"] + '<br> class: '+ inp_arr["class"])
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
