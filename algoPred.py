@@ -35,9 +35,8 @@ def jaccard_similarity(image1, image2):
     jaccard_similarity = intersection / union
     return jaccard_similarity
 
-from skimage.metrics import structural_similarity
-
 def pred_ssim(path, data, start, end):
+    from skimage.metrics import structural_similarity
     u_img = cv.imread(path)
     u_img = cv.cvtColor(u_img, cv.COLOR_BGR2GRAY)
     u_img = cv.Canny(200,350)
@@ -48,7 +47,7 @@ def pred_ssim(path, data, start, end):
         ximg = cv.cvtColor(ximg, cv.COLOR_BGR2GRAY)
         (score, diff) = structural_similarity(u_img, ximg, full=True)
         ssimarr.append([score,data['path'][i]])
-        return ssimarr
+    return ssimarr
     
 def pred_jaccard(path, data, start, end):
     resize_image(path, 256, path)
@@ -57,9 +56,9 @@ def pred_jaccard(path, data, start, end):
     ui_edge= cv.cvtColor(ui_edge, cv.COLOR_BGR2GRAY)
     ui_edge = cv.convertScaleAbs(ui_edge, alpha=1.5, beta=10)
     jaccardArr = []
-# before_gray = cv2.cvtColor(u_img, cv2.COLOR_BGR2GRAY)
     for i in range(start,end):
         ximg = cv.imread(data['path'][i])
         ximg = cv.cvtColor(ximg, cv.COLOR_BGR2GRAY)
         score = jaccard_similarity(ui_edge, ximg)
         jaccardArr.append([score,data['path'][i]])
+    return jaccardArr
