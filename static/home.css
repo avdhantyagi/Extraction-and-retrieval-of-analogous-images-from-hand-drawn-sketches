@@ -1,4 +1,17 @@
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'League Spartan','Courier New', Courier, monospace;
+    font-weight: light;
+    color: aliceblue;
     background-image: url("../static/img/Background.png");
-}        
+    width: fit-content;
+    font-size: 150%;
+}    
+div{
+    margin: 30px;
+}
+input{
+    font-size: large;
+}
+button, select{
+    font-size: large;
+}
