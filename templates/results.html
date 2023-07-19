@@ -8,8 +8,12 @@
 </head>
 <body>
     <div>
+        <h2>Input</h2>
+        <img src="/static/A.jpg">
+        <br>
+        <h2>Results</h2>
         {%for i in range(1,11)%}
-            <img src={{array[-i][1]}}>
+        <img src={{array[-i][1]}}>
         {%endfor%}
     </div>
 </body>
