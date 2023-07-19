@@ -61,4 +61,6 @@ def pred_jaccard(path, data, start, end):
         ximg = cv.cvtColor(ximg, cv.COLOR_BGR2GRAY)
         score = jaccard_similarity(ui_edge, ximg)
         jaccardArr.append([score,data['path'][i]])
+    import operator
+    jaccardArr = sorted(jaccardArr, key=operator.itemgetter(0))
     return jaccardArr

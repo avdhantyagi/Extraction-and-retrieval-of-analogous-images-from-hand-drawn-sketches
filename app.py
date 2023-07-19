@@ -1,13 +1,13 @@
 from flask import Flask, render_template, redirect, request, url_for
 import pandas as pd
+import algoPred as ap
 
 app = Flask(__name__, static_folder='static')
 
 inp_arr = {'algo':".", 'class':".", 'file':"."}
 
 index_for_classes = pd.read_csv("./index_for_classes.csv")
-end = 0
-start = 0
+data = pd.read_csv("./dataset.csv", names = ['path', 'class'])
 
 @app.route("/", methods = ['GET', 'POST'])
 def home():
@@ -20,6 +20,8 @@ def home():
         
         f.save(path)
         
+        end = 0
+        start = 0
         inp_arr['class'] = request.form.get('class')
         ui_class = inp_arr['class']
         
@@ -27,16 +29,20 @@ def home():
             if(ui_class == index_for_classes['class'][i]):
                 start = index_for_classes['id'][i]
                 end = index_for_classes['id'][i+1]
+        
+        if inp_arr['algo'] == "Jaccard":
+            global arr
+            arr = ap.pred_jaccard("./A.jpg", data, start, end)
         return (redirect(url_for('result')))
     
     else:
         return render_template('home.html')
 
-@app.route("/result", methods = ['GET', 'POST'])
+@app.route("/res", methods = ['GET', 'POST'])
 def result():
     if request.method == 'GET':
         
-        return("<h1>" + " Results : " + inp_arr["file"]+'<br> algo: '+inp_arr["algo"] + '<br> class: '+ inp_arr["class"])
+        return(render_template("results.html", array=arr))
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
