@@ -1,6 +1,5 @@
 body {
-    font-family: 'League Spartan','Courier New', Courier, monospace;
-    font-weight: light;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: aliceblue;
     background-image: url("../static/img/Background.png");
     width: fit-content;
