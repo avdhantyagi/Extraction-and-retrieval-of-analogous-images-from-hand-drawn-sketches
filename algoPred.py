@@ -56,11 +56,12 @@ def pred_jaccard(path, data, start, end):
     image = cv.imread(path)
     ui_edge = image
     ui_edge= cv.cvtColor(ui_edge, cv.COLOR_BGR2GRAY)
-    ui_edge = cv.convertScaleAbs(ui_edge, alpha=1.5, beta=10)
+    ui_edge = cv.Canny(ui_edge, 200,350)
     jaccardArr = []
     for i in range(start,end):
         ximg = cv.imread(data['path'][i])
         ximg = cv.cvtColor(ximg, cv.COLOR_BGR2GRAY)
+        ximg = cv.Canny(ximg, 200,350)
         score = jaccard_similarity(ui_edge, ximg)
         jaccardArr.append([score,data['path'][i]])
     import operator

@@ -35,9 +35,9 @@ def home():
                     return ("<h1>Class name error</h1>")
         global arr
         if inp_arr['algo'] == "Jaccard":
-            arr = ap.pred_jaccard("./A.jpg", data, start, end)
+            arr = ap.pred_jaccard("./static/A.jpg", data, start, end)
         elif inp_arr['algo'] == "SSIM":
-            arr = ap.pred_ssim("./A.jpg", data, start, end)
+            arr = ap.pred_ssim("./static/A.jpg", data, start, end)
         return (redirect(url_for('result')))
     
     else:
