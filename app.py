@@ -15,10 +15,12 @@ def home():
         inp_arr['algo'] = request.form.get('algo')
         
         f = request.files['file']
+        x = f
         
-        path = "./A.jpg"
+        path = "./static/A.jpg"
         
         f.save(path)
+        # x.save("./static/user.jpg")
         
         end = 0
         start = 0
@@ -31,10 +33,11 @@ def home():
                 end = index_for_classes['id'][i+1]
                 if start == end == 0:
                     return ("<h1>Class name error</h1>")
-        
+        global arr
         if inp_arr['algo'] == "Jaccard":
-            global arr
             arr = ap.pred_jaccard("./A.jpg", data, start, end)
+        elif inp_arr['algo'] == "SSIM":
+            arr = ap.pred_ssim("./A.jpg", data, start, end)
         return (redirect(url_for('result')))
     
     else:
@@ -44,7 +47,7 @@ def home():
 def result():
     if request.method == 'GET':
         
-        return(render_template("results.html", array=arr))
+        return(render_template("results.html", array=arr, inps = inp_arr))
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

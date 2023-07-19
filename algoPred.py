@@ -39,7 +39,7 @@ def pred_ssim(path, data, start, end):
     from skimage.metrics import structural_similarity
     u_img = cv.imread(path)
     u_img = cv.cvtColor(u_img, cv.COLOR_BGR2GRAY)
-    u_img = cv.Canny(200,350)
+    u_img = cv.Canny(u_img, 200,350)
 
     ssimarr = []
     for i in range(start,end):
@@ -47,7 +47,9 @@ def pred_ssim(path, data, start, end):
         ximg = cv.cvtColor(ximg, cv.COLOR_BGR2GRAY)
         (score, diff) = structural_similarity(u_img, ximg, full=True)
         ssimarr.append([score,data['path'][i]])
-    return ssimarr
+    import operator
+    ssimarr = sorted(ssimarr, key=operator.itemgetter(0))
+    return ssimarr[::-1]
     
 def pred_jaccard(path, data, start, end):
     resize_image(path, 256, path)
