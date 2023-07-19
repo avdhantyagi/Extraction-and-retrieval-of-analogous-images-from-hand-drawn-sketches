@@ -29,6 +29,8 @@ def home():
             if(ui_class == index_for_classes['class'][i]):
                 start = index_for_classes['id'][i]
                 end = index_for_classes['id'][i+1]
+                if start == end == 0:
+                    return ("<h1>Class name error</h1>")
         
         if inp_arr['algo'] == "Jaccard":
             global arr
