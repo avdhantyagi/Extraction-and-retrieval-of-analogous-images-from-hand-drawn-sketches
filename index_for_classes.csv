@@ -2,10 +2,10 @@ class,id
 Land,0
 Buildings,2340
 Tools,2662
-Store event,4107
-Snails and shells,4319
+Store-event,4107
+Snails-an-shells,4319
 Clo-occ,4413
-Bath Baby,5749
+Bath-Baby,5749
 Auto,6099
 Flowers,7653
 Prints,7723
@@ -23,6 +23,6 @@ Insects,16941
 Birds,18441
 Sea,20424
 Fish,21179
-Random Objects,21989
+Random-Objects,21989
 Land-small,22191
 end,28214
